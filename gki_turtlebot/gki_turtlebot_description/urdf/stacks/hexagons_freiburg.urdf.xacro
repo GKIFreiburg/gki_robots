@@ -216,7 +216,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://gki_turtlebot_description/meshes/stacks/hexagons_freiburg/plate_top.stl"/>
+          <mesh filename="package://gki_turtlebot_description/meshes/stacks/hexagons_freiburg/plate_top.dae"/>
         </geometry>
         <material name="Grey">
           <color rgba="0 0 0 1.0"/>
