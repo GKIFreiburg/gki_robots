@@ -3,7 +3,7 @@
     - Base      : kobuki
     - Stacks    : hexagons
     - 3d Sensor : kinect
--->    
+-->
 <robot name="turtlebot"
        xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
@@ -16,4 +16,10 @@
   <kobuki/>
   <stack_hexagons_freiburg parent="base_link"/>
   <sensor_kinect  parent="base_link"/>
+
+  <include filename="$(find gki_sensors_description)/urdf/hokuyo_urg.urdf.xacro" />
+  <xacro:hokuyo_urg name="base_laser" parent="plate_middle_link" ros_topic="base_scan" update_rate="10" ray_count="667" min_angle="120" max_angle="-120">
+    <origin xyz="-0.04 0.0 0.008" rpy="0 0 0"/>
+  </xacro:hokuyo_urg>
+
 </robot>
