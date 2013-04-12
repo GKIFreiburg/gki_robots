@@ -1,0 +1,15 @@
+<package>
+  <description brief="gki_turtlebot_description">
+
+     gki_turtlebot_description
+
+  </description>
+  <author>dornhege</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/gki_turtlebot_description</url>
+  <depend package="turtlebot_description"/>
+
+</package>
+
+
