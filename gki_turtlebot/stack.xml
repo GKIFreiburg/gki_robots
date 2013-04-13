@@ -1,0 +1,10 @@
+<stack>
+  <description brief="gki_turtlebot">The gki_turtlebot stack provides descriptions for the GKI TurtleBot2. </description>
+  <author>Christian Dornhege</author>
+  <license>BSD,MIT</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/gki_turtlebot</url>
+
+  <depend stack="turtlebot" />
+
+</stack>
