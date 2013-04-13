@@ -1,0 +1,15 @@
+<package>
+  <description brief="gki_turtlebot_bringup">
+
+     gki_turtlebot_bringup
+
+  </description>
+  <author>dornhege</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/gki_turtlebot_bringup</url>
+  <depend package="turtlebot_bringup"/>
+
+</package>
+
+

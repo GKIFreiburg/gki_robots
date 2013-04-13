@@ -1,0 +1,12 @@
+<launch>
+    <include file="$(find gki_turtlebot_bringup)/launch/minimal.launch" />
+
+    <include file="$(find turtlebot_bringup)/launch/includes/kobuki/_safety_controller.launch" />
+    <include file="$(find turtlebot_teleop)/launch/ps3_teleop.launch" />
+
+    <include file="$(find gki_turtlebot_bringup)/launch/laser.launch" />
+    <include file="$(find turtlebot_bringup)/launch/3dsensor.launch">
+        <arg name="scan_processing" value="false" />
+    </include>
+</launch>
+
