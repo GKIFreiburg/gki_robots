@@ -1,7 +1,7 @@
 <launch>
   <node pkg="hokuyo_node" type="hokuyo_node" name="base_laser_node">
     <remap from="scan" to="base_scan" />
-    <param name="port" value="/dev/laser" />
+    <param name="port" value="/dev/sensors/laser" />
     <param name="frame_id" type="string" value="base_laser_link" />
     <param name="min_ang" type="double" value="-2.09439510239319549227" />
     <param name="max_ang" type="double" value="2.09439510239319549227" />
