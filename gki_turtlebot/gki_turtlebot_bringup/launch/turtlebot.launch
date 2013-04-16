@@ -5,6 +5,7 @@
     <include file="$(find gki_turtlebot_bringup)/launch/ps3_teleop.launch" />
 
     <include file="$(find gki_turtlebot_bringup)/launch/laser.launch" />
+    <include file="$(find gki_turtlebot_bringup)/launch/scan_filter.launch" />
     <include file="$(find turtlebot_bringup)/launch/3dsensor.launch">
         <arg name="scan_processing" value="false" />
     </include>

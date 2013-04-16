@@ -9,6 +9,8 @@
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/gki_turtlebot_bringup</url>
   <depend package="turtlebot_bringup"/>
+  <depend package="gki_turtlebot_description"/>
+  <depend package="hector_turtlebot_scan_filter"/>
 
 </package>
 
