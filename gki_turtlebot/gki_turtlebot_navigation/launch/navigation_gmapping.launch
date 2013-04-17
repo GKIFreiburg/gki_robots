@@ -1,0 +1,5 @@
+<launch>
+  <include file="$(find gki_turtlebot_navigation)/launch/includes/_gmapping.launch"/>
+
+  <include file="$(find gki_turtlebot_navigation)/launch/includes/_move_base.launch"/>
+</launch>

@@ -1,0 +1,28 @@
+<launch>
+  <arg name="scan_topic" default="base_scan_filtered" />
+
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+    <remap from="scan" to="$(arg scan_topic)"/>
+
+    <param name="base_frame" value="base_footprint"/>
+    <param name="odom_frame" value="odom"/>
+
+    <param name="maxUrange" value="6.0"/>
+    <param name="srr" value="0.1"/>
+    <param name="srt" value="0.2"/>
+    <param name="str" value="0.1"/>
+    <param name="stt" value="0.2"/>
+
+    <param name="linearUpdate" value="0.5"/>
+    <param name="angularUpdate" value="0.5"/>
+
+    <param name="particles" value="80"/>
+
+    <param name="delta" value="0.025"/>
+    <param name="xmin" value="-50.0"/>
+    <param name="ymin" value="-50.0"/>
+    <param name="xmax" value="50.0"/>
+    <param name="ymax" value="50.0"/>
+
+  </node>
+</launch>

@@ -1,0 +1,16 @@
+<package>
+  <description brief="gki_turtlebot_navigation">
+
+     gki_turtlebot_navigation
+
+  </description>
+  <author>dornhege</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/gki_turtlebot_navigation</url>
+  <depend package="move_base"/>
+  <depend package="gmapping"/>
+
+</package>
+
+
