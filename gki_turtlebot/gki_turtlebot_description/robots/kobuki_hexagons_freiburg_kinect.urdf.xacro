@@ -16,15 +16,6 @@
   <kobuki/>
   <stack_hexagons_freiburg parent="base_link"/>
 
-  <!-- base_footprint is a fictitious link(frame) that is on the ground right below base_link origin, navigation stack depends on this frame -->
-  <link name="base_footprint" />
-  <joint name="base_footprint_joint" type="fixed">
-    <origin xyz="0 0 0.017" rpy="0 0 0" />
-    <parent link="base_footprint"/>
-    <child link="base_link" />
-  </joint>
-
-
   <sensor_kinect  parent="base_link"/>
 
   <include filename="$(find gki_sensors_description)/urdf/hokuyo_urg.urdf.xacro" />
