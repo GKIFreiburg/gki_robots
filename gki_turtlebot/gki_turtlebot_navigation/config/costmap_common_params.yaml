@@ -3,9 +3,11 @@ obstacle_range: 2.5
 raytrace_range: 3.0
 robot_radius: 0.22
 inflation_radius: 0.50
-observation_sources: scan bump
+observation_sources: scan bump kinect
 
 scan: {data_type: LaserScan, topic: /base_scan_filtered, marking: true, clearing: true}
+
+kinect: {data_type: PointCloud2, topic: /camera/depth_registered/points, marking: true, clearing: true}
 
 # Current bump cloud configuration
 bump: {data_type: PointCloud2, topic: mobile_base/sensors/bumper_pointcloud, marking: true, clearing: false}

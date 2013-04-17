@@ -3,8 +3,8 @@
     <remap from="scan" to="base_scan" />
     <param name="port" value="/dev/sensors/laser" />
     <param name="frame_id" type="string" value="/base_laser_link" />
-    <param name="min_ang" type="double" value="-2.09439510239319549227" />
-    <param name="max_ang" type="double" value="2.09439510239319549227" />
+    <param name="min_ang" type="double" value="-2.086214" />
+    <param name="max_ang" type="double" value="2.092350" />
     <param name="skip" type="int" value="0" />
     <param name="intensity" value="false" />
     <param name="use_rep_117" value="true" />
