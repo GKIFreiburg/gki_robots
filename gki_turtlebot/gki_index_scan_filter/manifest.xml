@@ -1,0 +1,15 @@
+<package>
+  <description brief="gki_index_scan_filter performs simple index-based filtering of laser scanner data to prevent robot parts and shadow points from showing up in laser scans (based on hector_turtlebot_scan_filter - added REP117 support)">
+
+     gki_index_scan_filter performs simple index-based filtering of laser scanner data to prevent robot parts and shadow points from showing up in laser scans
+
+  </description>
+  <author>Stefan Kohlbrecher</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/gki_index_scan_filter</url>
+  <depend package="roscpp"/>
+  <depend package="sensor_msgs"/>
+
+</package>
+
