@@ -16,7 +16,7 @@
     <param name="base_frame_id" value="base_footprint"/>
 
     <param name="min_particles" value="500"/>
-    <param name="max_particles" value="5000"/>
+    <param name="max_particles" value="2000"/>
 
     <param name="update_min_d" value="0.1"/>
     <param name="update_min_a" value="0.2"/>
