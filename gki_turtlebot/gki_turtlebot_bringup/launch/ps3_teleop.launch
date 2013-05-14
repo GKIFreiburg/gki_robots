@@ -9,6 +9,7 @@
     <param name="axis_linear" value="1"/>
     <param name="axis_angular" value="2"/>
     <remap from="turtlebot_teleop_joystick/cmd_vel" to="cmd_vel_mux/input/teleop_raw"/>
+    <!-- <remap from="turtlebot_teleop_joystick/cmd_vel" to="cmd_vel_mux/input/teleop"/> -->
   </node>
 
   <node pkg="joy" type="joy_node" name="joystick"/>
