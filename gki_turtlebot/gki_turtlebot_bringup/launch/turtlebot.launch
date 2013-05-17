@@ -9,5 +9,6 @@
     <include file="$(find turtlebot_bringup)/launch/3dsensor.launch">
         <arg name="scan_processing" value="false" />
     </include>
+    <include file="$(find gki_turtlebot_bringup)/launch/arduino_buttons.launch" />
 </launch>
 
