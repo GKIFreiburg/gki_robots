@@ -11,6 +11,8 @@
   <depend package="turtlebot_bringup"/>
   <depend package="gki_turtlebot_description"/>
   <depend package="gki_index_scan_filter"/>
+  <depend package="robot_pose_ekf"/>
+  <depend package="rosserial_python"/>
 
 </package>
 
