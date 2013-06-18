@@ -11,6 +11,7 @@
   <depend package="turtlebot_bringup"/>
   <depend package="gki_turtlebot_description"/>
   <depend package="gki_index_scan_filter"/>
+  <depend package="turtlebot_button"/>
 
 </package>
 
