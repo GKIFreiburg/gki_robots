@@ -9,7 +9,7 @@ ros::Publisher pub;
 
 void estop(const std_msgs::Bool input)
 {
-    if (input.data)
+    if (!input.data)
     {
         geometry_msgs::Twist cmd_msg;
         cmd_msg.linear.x = 0;
