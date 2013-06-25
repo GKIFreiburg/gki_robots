@@ -10,6 +10,10 @@
 #   short_desc:     Short description (optional)
 
 subscribers:
+  - name:        "EStop"
+    topic:       "input/estop"
+    timeout:     0.5
+    priority:    15
   - name:        "Safe reactive controller"
     topic:       "input/safety_controller"
     timeout:     0.2
