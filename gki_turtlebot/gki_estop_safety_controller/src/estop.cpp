@@ -30,7 +30,7 @@ void etstop()
 
 int main (int argc, char **argv){
     //Initialize ROS
-    ros::init(argc, argv, "box_dector");
+    ros::init(argc, argv, "estop_safety_controller");
     ros::NodeHandle nh;
 
 
@@ -38,7 +38,7 @@ int main (int argc, char **argv){
     ros::Subscriber sub = nh.subscribe ("/estop", 1, estop);
 
     // Create a ROS publisher for the output point cloud
-    pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel_mux", 1);
+    pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel_mux/input/estop", 1);
 
 
     // Spin

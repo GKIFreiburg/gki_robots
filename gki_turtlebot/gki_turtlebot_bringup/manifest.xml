@@ -14,6 +14,7 @@
   <depend package="turtlebot_button"/>
   <depend package="robot_pose_ekf"/>
   <depend package="rosserial_python"/>
+  <depend package="gki_estop_safety_controller"/>
 
 </package>
 
