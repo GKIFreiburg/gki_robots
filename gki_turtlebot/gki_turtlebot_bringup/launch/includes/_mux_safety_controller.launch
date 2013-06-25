@@ -1,0 +1,5 @@
+<launch> 
+	-- Multiplexer
+	<node name="topic_tools" pkg="mux" type="?" args="mux_safety_controller input1 input2 input3" /> 
+
+</launch>
