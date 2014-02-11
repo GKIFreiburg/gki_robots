@@ -1,0 +1,27 @@
+<!--
+  Netbook battery monitor
+ -->
+<launch>
+  <arg name="battery"/>
+  <arg name="battery2"/>
+  <arg name="battery2_present"/>
+
+  <!-- if battery2 is present start two battery monitors
+       and rename the /laptop_charge topic  -->
+  <group if="$(arg battery2_present)">
+    <node pkg="gki_linux_hardware" type="laptop_battery.py" name="laptop_battery_1">
+          <param name="acpi_path" type="string" value="$(arg battery)" />
+    </node>
+    <node pkg="gki_linux_hardware" type="laptop_battery.py" name="laptop_battery_2">
+          <param name="acpi_path" type="string" value="$(arg battery2)" />
+          <remap from="laptop_charge" to="laptop_charge2" />
+    </node>
+  </group>
+  <group unless="$(arg battery2_present)">
+    <node pkg="gki_linux_hardware" type="laptop_battery.py" name="laptop_battery_1">
+          <param name="acpi_path" type="string" value="$(arg battery)" />
+    </node>
+  </group>
+
+</launch>
+
