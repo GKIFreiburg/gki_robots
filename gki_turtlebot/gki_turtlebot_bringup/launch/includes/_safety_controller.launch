@@ -1,4 +1,6 @@
 <launch>
+  <arg name="turtlebot_has_buttons" />
+
   <!-- safety controller -->
   <node pkg="nodelet" type="nodelet" name="navigation_safety_controller" args="load kobuki_safety_controller/SafetyControllerNodelet mobile_base_nodelet_manager">
     <remap from="navigation_safety_controller/cmd_vel"           to="cmd_vel_mux/input/safety_controller_active"/>
@@ -7,5 +9,20 @@
     <remap from="navigation_safety_controller/events/wheel_drop" to="mobile_base/events/wheel_drop"/>
   </node>
   <include file="$(find gki_turtlebot_bringup)/launch/includes/_mux_safety_controller.launch" />
-  <node pkg="gki_estop_safety_controller" type="estop" name="gki_estop_safety_controller" />
+
+  <!-- If the turtlebot has button mount, EStop is handled by that -->
+  <group if="$(arg turtlebot_has_buttons)">
+    <node pkg="gki_estop_safety_controller" type="estop" name="gki_estop_safety_controller">
+      <param name="auto_estop" value="true" />
+      <param name="use_kobuki_din3_estop" value="false"/>
+    </node>
+  </group>
+  <!-- Else: It is handled by the Kobuki Base directly -->
+  <group unless="$(arg turtlebot_has_buttons)">
+    <node pkg="gki_estop_safety_controller" type="estop" name="gki_estop_safety_controller">
+      <param name="auto_estop" value="true" />
+      <param name="use_kobuki_din3_estop" value="true"/>
+    </node>
+  </group>
+
 </launch>

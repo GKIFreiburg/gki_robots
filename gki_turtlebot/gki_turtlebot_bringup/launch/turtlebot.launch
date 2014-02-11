@@ -1,7 +1,12 @@
 <launch>
+    <arg name="turtlebot_has_buttons" value="$(optenv TURTLEBOT_HAS_BUTTONS false)"/>
+
     <include file="$(find gki_turtlebot_bringup)/launch/minimal.launch" />
 
-    <include file="$(find gki_turtlebot_bringup)/launch/includes/_safety_controller.launch" />
+    <include file="$(find gki_turtlebot_bringup)/launch/includes/_safety_controller.launch">
+        <arg name="turtlebot_has_buttons" value="$(arg turtlebot_has_buttons)"/>
+    </include>
+
     <include file="$(find gki_turtlebot_bringup)/launch/ps3_teleop.launch" />
 
     <include file="$(find gki_turtlebot_bringup)/launch/laser.launch" />
@@ -9,6 +14,8 @@
     <include file="$(find turtlebot_bringup)/launch/3dsensor.launch">
         <arg name="scan_processing" value="false" />
     </include>
-    <include file="$(find gki_turtlebot_bringup)/launch/arduino_buttons.launch" />
+    <group if="$(arg turtlebot_has_buttons)">
+        <include file="$(find gki_turtlebot_bringup)/launch/arduino_buttons.launch" />
+    </group>
 </launch>
 
