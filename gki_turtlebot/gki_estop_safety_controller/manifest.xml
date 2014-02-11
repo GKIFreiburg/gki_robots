@@ -9,7 +9,6 @@
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/gki_estop_safety_controller</url>
   <depend package="roscpp"/>
-  <depend package ="turtlebot_button"/>
   <depend package ="std_msgs" />
 
 </package>
