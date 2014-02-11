@@ -10,6 +10,7 @@
   <url>http://ros.org/wiki/gki_estop_safety_controller</url>
   <depend package="roscpp"/>
   <depend package ="std_msgs" />
+  <depend package ="kobuki_msgs" />
 
 </package>
 

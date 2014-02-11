@@ -1,5 +1,6 @@
 #include <ros/ros.h>
 #include <std_msgs/Bool.h>
+#include <kobuki_msgs/SensorState.h>
 #include <geometry_msgs/Twist.h>
 
 ros::Publisher pub;
@@ -21,9 +22,21 @@ void stop_robot()
     pub.publish(cmd_msg);
 }
 
-void estop(const std_msgs::Bool input)
+void estop(const std_msgs::Bool & input)
 {
     if(!input.data) {
+        stop_robot();
+        ROS_WARN_THROTTLE(5.0, "Stopping Robot due to EStop pressed.");
+    }
+
+    data_available = true;
+}
+
+void kobuki_core(const kobuki_msgs::SensorState & sensors)
+{
+    bool din3_on = (sensors.digital_input & kobuki_msgs::SensorState::DIGITAL_INPUT3)
+        == kobuki_msgs::SensorState::DIGITAL_INPUT3;
+    if(!din3_on) {  // EStop not on GO
         stop_robot();
         ROS_WARN_THROTTLE(5.0, "Stopping Robot due to EStop pressed.");
     }
@@ -41,8 +54,9 @@ int main (int argc, char **argv)
     bool auto_estop = true;
     nh.param("auto_estop", auto_estop, auto_estop);
 
-    ros::Subscriber sub = nh.subscribe ("/estop", 1, estop);
-    pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel_mux/input/estop", 1);
+    ros::Subscriber sub = nh.subscribe ("estop", 1, estop);
+    ros::Subscriber subKobuki = nh.subscribe("mobile_base/sensors/core", 1, kobuki_core);
+    pub = nh.advertise<geometry_msgs::Twist>("cmd_vel_mux/input/estop", 1);
 
     ros::Rate r(1);   //    1Hz
     while (ros::ok()) {
@@ -51,7 +65,7 @@ int main (int argc, char **argv)
                 ROS_WARN_THROTTLE(1.0, "No EStop data available - Stopping robot!");
                 stop_robot();
             } else {
-                ROS_WARN_THROTTLE(1.0, "No EStop data available!");
+                ROS_WARN_THROTTLE(5.0, "No EStop data available!");
             }
         }
 
