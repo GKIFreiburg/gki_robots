@@ -53,9 +53,12 @@ int main (int argc, char **argv)
 
     bool auto_estop = true;
     nh.param("auto_estop", auto_estop, auto_estop);
+    bool use_kobuki_din3_estop = false;
+    nh.param("use_kobuki_din3_estop", use_kobuki_din3_estop, use_kobuki_din3_estop);
 
     ros::Subscriber sub = nh.subscribe ("estop", 1, estop);
-    ros::Subscriber subKobuki = nh.subscribe("mobile_base/sensors/core", 1, kobuki_core);
+    if(use_kobuki_din3_estop)
+        ros::Subscriber subKobuki = nh.subscribe("mobile_base/sensors/core", 1, kobuki_core);
     pub = nh.advertise<geometry_msgs::Twist>("cmd_vel_mux/input/estop", 1);
 
     ros::Rate r(1);   //    1Hz
