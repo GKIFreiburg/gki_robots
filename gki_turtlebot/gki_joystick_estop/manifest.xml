@@ -1,0 +1,14 @@
+<package>
+  <description brief="gki_joystick_estop">
+     gki_joystick_estop
+  </description>
+  <author>Christian Dornhege</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/gki_joystick_estop</url>
+
+  <depend package="roscpp"/>
+  <depend package="std_msgs"/>
+  <depend package="sensor_msgs"/>
+</package>
+
