@@ -12,16 +12,25 @@
 
   <!-- If the turtlebot has button mount, EStop is handled by that -->
   <group if="$(arg turtlebot_has_buttons)">
+    <!-- We don't have EStop from the base, so the button mount and joystick both send on estop topics.
+         Run two gki_estop_safety_controller one for the /estop topic, one for /joystick_estop -->
     <node pkg="gki_estop_safety_controller" type="estop" name="gki_estop_safety_controller">
       <param name="auto_estop" value="true" />
       <param name="use_kobuki_din3_estop" value="false"/>
     </node>
+    <node pkg="gki_estop_safety_controller" type="estop" name="gki_estop_safety_controller_joystick">
+      <param name="auto_estop" value="true" />
+      <param name="use_kobuki_din3_estop" value="false"/>
+      <remap from="estop" to="joystick_estop" />
+    </node>
   </group>
   <!-- Else: It is handled by the Kobuki Base directly -->
   <group unless="$(arg turtlebot_has_buttons)">
+    <!-- One node is sufficient, we use hard estop from Kobuki base and Joystick EStop from joy -->
     <node pkg="gki_estop_safety_controller" type="estop" name="gki_estop_safety_controller">
       <param name="auto_estop" value="true" />
       <param name="use_kobuki_din3_estop" value="true"/>
+      <remap from="estop" to="joystick_estop" />
     </node>
   </group>
 
