@@ -13,8 +13,8 @@
   </node>
 
   <node pkg="gki_joystick_estop" type="gki_joystick_estop" name="gki_joystick_estop">
-      <param name="stop_button" value="0"/>
-      <param name="go_button" value="2"/>
+      <param name="stop_button" value="14"/>
+      <param name="go_button" value="12"/>
       <param name="auto_estop" value="true"/>
   </node>
 
