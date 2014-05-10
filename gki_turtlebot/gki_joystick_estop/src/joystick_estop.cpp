@@ -59,17 +59,17 @@ int main (int argc, char **argv)
     ros::Rate r(10);
     while (ros::ok()) {
         ros::Duration timeSinceLastData = ros::Time::now() - lastDataTime;
-        if(timeSinceLastData > ros::Duration(1.0)) {
+        if(timeSinceLastData > ros::Duration(5.0)) {
             if(auto_estop) {
                 ROS_WARN_THROTTLE(1.0, "No EStop data available - Stopping robot!");
                 estop_on_go = false;
-                send_estop();
             } else {
                 ROS_WARN_THROTTLE(5.0, "No EStop data available!");
             }
         }
 
         ros::spinOnce();
+        send_estop();
         r.sleep();
     }
 }
