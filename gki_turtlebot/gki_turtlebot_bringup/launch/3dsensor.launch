@@ -7,7 +7,7 @@
   turtebot_rviz_launchers/view_robot.launch to visualise)
   and provide args to disable them so you can optimise the
   horsepower for your application.
-  
+
   For an example of disabling processing modules, check
   any of the turtlebot_core_apps (e.g. android_make_a_map.launch
   only enables scan_processing for depthimage_to_laserscan and
@@ -24,7 +24,7 @@
   <arg name="depth_registration" default="true"/>
   <arg     if="$(arg depth_registration)" name="depth" value="depth_registered" />
   <arg unless="$(arg depth_registration)" name="depth" value="depth" />
-  
+
   <!-- Processing Modules -->
   <arg name="rgb_processing"     default="true"/>
   <arg name="depth_processing"   default="true"/>
@@ -84,7 +84,7 @@
         <remap from="$(arg depth)/image_rect" to="$(arg depth)/image_rect_raw"/>
       </node>
     </group>
-    
+
     <!--                        Laserscan 
       This uses lazy subscribing, so will not activate until scan is requested.
     -->

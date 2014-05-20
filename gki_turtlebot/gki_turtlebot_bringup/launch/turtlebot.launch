@@ -11,8 +11,9 @@
 
     <include file="$(find gki_turtlebot_bringup)/launch/laser.launch" />
     <include file="$(find gki_turtlebot_bringup)/launch/scan_filter.launch" />
-    <include file="$(find turtlebot_bringup)/launch/3dsensor.launch">
+    <include file="$(find gki_turtlebot_bringup)/launch/3dsensor.launch">
         <arg name="scan_processing" value="false" />
+        <arg name="depth_registration" value="false" />
     </include>
     <group if="$(arg turtlebot_has_buttons)">
         <include file="$(find gki_turtlebot_bringup)/launch/arduino_buttons.launch" />

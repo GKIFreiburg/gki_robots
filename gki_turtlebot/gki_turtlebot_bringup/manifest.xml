@@ -16,6 +16,7 @@
   <depend package="rosserial_python"/>
   <depend package="gki_estop_safety_controller"/>
   <depend package="gki_joystick_estop"/>
+  <depend package="camera_throttler_nodelets"/>
 
 </package>
 
