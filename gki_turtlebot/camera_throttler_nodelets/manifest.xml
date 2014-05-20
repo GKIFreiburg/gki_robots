@@ -1,0 +1,22 @@
+<package>
+  <description brief="camera_throttler_nodelets">
+     camera_throttler_nodelets - decatkinized.
+  </description>
+  <author>Jon Weisz</author>
+
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <!-- url>http://ros.org/wiki/camera_throttler_nodelets</url -->
+  <depend package="roscpp"/>
+  <depend package="pluginlib"/>
+  <depend package="sensor_msgs"/>
+  <depend package="nodelet_topic_tools"/>
+  <depend package="nodelet"/>
+
+  <export>
+    <nodelet plugin="${prefix}/plugin_description.xml" />
+  </export>
+
+</package>
+
+
