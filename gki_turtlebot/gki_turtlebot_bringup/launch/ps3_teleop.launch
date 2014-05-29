@@ -2,12 +2,14 @@
   <!--  smooths inputs from cmd_vel_mux/input/teleop_raw to cmd_vel_mux/input/teleop -->
   <include file="$(find turtlebot_teleop)/launch/includes/_velocity_smoother.launch"/>
 
-  <node pkg="turtlebot_teleop" type="turtlebot_teleop_joy" name="turtlebot_teleop_joystick">
+  <node pkg="gki_turtlebot_teleop" type="turtlebot_teleop_joy" name="turtlebot_teleop_joystick">
     <param name="scale_angular" value="1.5"/>
     <param name="scale_linear" value="0.5"/>
     <param name="axis_deadman" value="10"/>
     <param name="axis_linear" value="1"/>
     <param name="axis_angular" value="2"/>
+    <param name="joystick_timeout" value="0.5"/>
+
     <remap from="turtlebot_teleop_joystick/cmd_vel" to="cmd_vel_mux/input/teleop_raw"/>
     <!--remap from="turtlebot_teleop_joystick/cmd_vel" to="cmd_vel_mux/input/teleop"/-->
   </node>
