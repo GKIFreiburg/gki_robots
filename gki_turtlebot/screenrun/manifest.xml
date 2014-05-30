@@ -1,0 +1,13 @@
+<package>
+  <description brief="screenrun">
+      screenrun is a small tool that pushes commands into a screen window.
+      Use \015 after a command for ENTER, i.e. executing it.
+  </description>
+  <author>Christian Dornhege</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/screenrun</url>
+  <depend package="roscpp"/>
+</package>
+
+
