@@ -1,0 +1,5 @@
+<launch> 
+	-- Multiplexer
+    <node name="safety_controller_mux" pkg="topic_tools" type="mux" args="/cmd_vel_mux/input/safety_controller /cmd_vel_mux/input/safety_controller_active /cmd_vel_mux/input/safety_controller_dummy_disabled" /> 
+
+</launch>

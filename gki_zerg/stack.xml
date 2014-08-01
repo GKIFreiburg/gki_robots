@@ -1,0 +1,8 @@
+<stack>
+  <description brief="gki_zerg">The gki_zerg stack provides descriptions for the Zerg robots. </description>
+  <author>Christian Dornhege</author>
+  <license>BSD,MIT</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/gki_zerg</url>
+
+</stack>
