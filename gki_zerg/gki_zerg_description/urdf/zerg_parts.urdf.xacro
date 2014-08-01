@@ -58,7 +58,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-            <box size="0.04 0.02 0.435" />
+            <box size="0.04 0.357 0.02" />
         </geometry>
       </collision>
       <inertial>
