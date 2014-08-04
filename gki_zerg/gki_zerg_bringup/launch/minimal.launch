@@ -1,0 +1,18 @@
+<launch>
+  <arg name="battery"    value="$(optenv TURTLEBOT_BATTERY /proc/acpi/battery/BAT0)"/>  <!-- /proc/acpi/battery/BAT0 -->
+  <arg name="battery2_present"    value="$(optenv TURTLEBOT_BATTERY2_PRESENT false)"/>
+  <arg name="battery2"    value="$(optenv TURTLEBOT_BATTERY2)"/>
+  <arg name="simulation" value="$(optenv TURTLEBOT_SIMULATION false)"/>
+
+  <param name="/use_sim_time" value="$(arg simulation)"/>
+
+  <include file="$(find gki_zerg_bringup)/launch/includes/_robot.launch">
+  </include>
+  <include file="$(find gki_zerg_bringup)/launch/includes/_mobile_base.launch">
+  </include>
+  <include file="$(find gki_zerg_bringup)/launch/includes/_netbook.launch">
+    <arg name="battery" value="$(arg battery)" />
+    <arg name="battery2" value="$(arg battery2)" />
+    <arg name="battery2_present" value="$(arg battery2_present)" />
+  </include>
+</launch>

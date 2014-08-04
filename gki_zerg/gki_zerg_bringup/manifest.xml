@@ -1,0 +1,22 @@
+<package>
+  <description brief="gki_zerg_bringup">
+
+     gki_zerg_bringup
+
+  </description>
+  <author>dornhege</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/gki_zerg_bringup</url>
+
+  <depend package="gki_zerg_description"/>
+  <depend package="gki_index_scan_filter"/>
+  <depend package="robot_pose_ekf"/>
+  <depend package="rosserial_python"/>
+  <depend package="gki_estop_safety_controller"/>
+  <depend package="gki_joystick_estop"/>
+  <depend package="axis_camera"/>
+
+</package>
+
+

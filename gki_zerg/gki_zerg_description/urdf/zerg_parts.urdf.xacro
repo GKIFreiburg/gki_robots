@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!--
+  Added fixed parts to the base
+ -->
+<robot name="zerg_parts" xmlns:xacro="http://ros.org/wiki/xacro">
+  <include filename="$(find turtlebot_description)/urdf/common_properties.urdf.xacro"/>
+  
+  <!-- Xacro properties -->
+  <xacro:property name="M_SCALE" value="0.001"/>
+  
+  <!-- Xacro macros -->
+  <!-- Bar macros -->
+
+  <xacro:macro name="bar_vertical" params="parent number x_loc y_loc z_loc">  
+    <joint name="bar_vertical_${number}_joint" type="fixed">
+      <origin xyz="${x_loc} ${y_loc} ${z_loc}" rpy="0 0 0"/>
+      <parent link="${parent}"/>
+      <child link="bar_vertical_${number}_link"/>
+    </joint>
+    <link name="bar_vertical_${number}_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.04 0.02 0.435" />
+        </geometry>
+        <xacro:insert_block name="material_light_grey"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.04 0.02 0.435" />
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.01"/>
+        <origin xyz="0 0 0"/>
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+                 iyy="0.0001" iyz="0.0"
+                 izz="0.0001"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+
+  <xacro:macro name="bar_horizontal" params="parent number x_loc y_loc z_loc">  
+    <joint name="bar_horizontal_${number}_joint" type="fixed">
+      <origin xyz="${x_loc} ${y_loc} ${z_loc}" rpy="0 0 0"/>
+      <parent link="${parent}"/>
+      <child link="bar_horizontal_${number}_link"/>
+    </joint>
+    <link name="bar_horizontal_${number}_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.04 0.357 0.02" />
+        </geometry>
+        <xacro:insert_block name="material_light_grey"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.04 0.357 0.02" />
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.01"/>
+        <origin xyz="0 0 0"/>
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+                 iyy="0.0001" iyz="0.0"
+                 izz="0.0001"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+
+  <!-- 
+    Stack macro - all the components relative transforms are made with respect 
+    to the parent link (usually base_link). They could be made relative to each
+    other, but there is no necessary reason to do so.
+  -->
+  <xacro:macro name="zerg_parts" params="parent">
+    <bar_vertical parent="${parent}" number="0" x_loc="0.0" y_loc= "0.1885" z_loc="0.2585"/>
+    <bar_vertical parent="${parent}" number="1" x_loc="0.0" y_loc="-0.1885" z_loc="0.2585"/>
+    <bar_horizontal parent="${parent}" number="0" x_loc="0.0" y_loc="0.0" z_loc="0.4"/>
+  </xacro:macro>
+</robot>
