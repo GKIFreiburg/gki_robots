@@ -1,0 +1,15 @@
+<package>
+  <description brief="qextserialport">
+  </description>
+  <author></author>
+  <license>MIT</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/</url>
+  <depend package="roscpp"/>
+
+  <export>
+    <cpp cflags="-I${prefix}/qextserialport/src" lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib -lqextserialport"/>
+  </export>
+
+</package>
+

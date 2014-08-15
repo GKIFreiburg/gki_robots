@@ -14,6 +14,7 @@
   <depend package="sensor_msgs"/>
   <depend package="nav_msgs"/>
   <depend package="gki_utils"/>
+  <depend package="qextserialport"/>
 
 </package>
 
