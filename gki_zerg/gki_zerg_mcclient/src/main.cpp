@@ -413,6 +413,8 @@ void printHelp() {
 
 int main( int argc, char **argv )
 {
+   ros::init(argc, argv, "mcclient");
+   ros::NodeHandle nh;
    _transVelLimit = -1; // -1: unlimited
    _rotVelLimit = -1;
    _lastTransVel = 0;
@@ -424,7 +426,6 @@ int main( int argc, char **argv )
    bool controlLaserPitch = false;
    char c;
 
-   ros::init(argc, argv, "mcclient");
 
    while((c = getopt(argc, argv, "ad:c:hp")) != EOF)
    {
@@ -471,8 +472,6 @@ int main( int argc, char **argv )
       printHelp();
       return 1;
    }
-
-   ros::NodeHandle nh;
 
    McClientParams::subscribeParams(true);
 
