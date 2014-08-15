@@ -1,0 +1,12 @@
+# Define the goal
+uint32 FIXEDPOS=1
+uint32 SWEEP=2
+uint32 command
+float64 pan
+float64 tilt
+float64 sweep_step
+float64 sweep_hold_time
+---
+# Define the result
+---
+# Define a feedback message
