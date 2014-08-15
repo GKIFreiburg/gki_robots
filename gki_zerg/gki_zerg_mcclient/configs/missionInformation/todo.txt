@@ -1,0 +1,4 @@
+-> Bilder integrieren
+-> Punkte in Bildern anschaun
+-> Entrance-Bild: Stehen die Hütchen extrem nah an der Wand!? => Threshold ändern!
+-> Farbe elevator marker bestimmen

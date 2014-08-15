@@ -1,0 +1,100 @@
+<document>
+
+	<!-- 1 = Lurker, 0 = Zerg -->
+	<robot type="0"/>
+
+    <motor>
+      <left p="20" i="10" d="1" />
+      <right p="20" i="10" d="1" />
+      <rotation p="5" i="0" d="50" offset="200"/>
+      <delay cycles="40"/>   <!-- Anzahl Zyklen bis zur Abschaltung der Motoren, bei 0 keine Abschaltung -->
+    </motor>
+
+    <!--<wheels outline="644" acceleration="4000"/> Back to old wheels :)-->
+    <wheels outline="393" acceleration="2000"/> <!-- in mm bzw. mm/s^2 -->
+    <speed min="100" max="3500" mindist="250" maxdist="3000"/> <!-- in mm bzw. mm/s -->
+
+	<!-- Accelerometer -->
+	<acc active="0" />
+
+        <flex>
+        </flex>
+
+        <!-- Bumper Sensor -->
+<!--        <bumper>
+        <sensor converter="0" port="0" />
+        <sensor converter="0" port="1" />
+	</bumper>
+-->
+
+	<!-- Pyro Sensor -->
+	<pyro active="0" converter="1" adport="5"  x="0.0" y="0" z="-50.0" pitch="0.0" yaw="0.0" roll="0.0" minrange="0" maxrange="4000" viewangle="40"/> 
+
+	<!-- CO2 Sensor -->
+	<co2 active="0" converter1="0" adport1="7"  converter2="1" adport2="0" x="0.0" y="0" z="-50.0" pitch="0.0" yaw="0.0" roll="0.0" minrange="0" maxrange="4000" viewangle="360"/> 
+	
+	<!-- Compass -->
+	<compass active="0" />
+	
+	<!-- Compass -->
+	<compass2 active="0" />
+
+	<!-- Sonar Sensor -->
+    
+	<sonar minrange="0" maxrange="11000" viewangle="60">
+<!--        <sensor adress="E0" x="-190.0" y="63.0" z="-80.0" pitch="0.0" yaw="90.0" roll="0.0"/> --> 
+        
+        <sensor adress="E2" x="-170.0" y="63.0" z="-160.0" pitch="0.0" yaw="45.0" roll="0.0"/> 
+        
+<!--        <sensor adress="E4" x="0.0" y="60.0" z="-185.0" pitch="0.0" yaw="0.0" roll="0.0"/> -->        
+        <sensor adress="E6" x="170.0" y="63.0" z="-160.0" pitch="0.0" yaw="-45.0" roll="0.0"/>  
+        
+<!--        <sensor adress="E8" x="190.0" y="63.0" z="-80.0" pitch="0.0" yaw="-90.0" roll="0.0"/> -->
+
+	</sonar>
+
+        <!-- TPA81 Sensor -->
+<!--        <tpa81 minrange="0" maxrange="2000" viewangle="41">
+                <sensor active="0" adress="D2" x="180.0" y="90.0" z="-80.0" pitch="0.0" yaw="-90.0" roll="0.0"/>
+                <sensor active="0" adress="D4" x="0.0" y="100.0" z="-185.0" pitch="0.0" yaw="0.0" roll="0.0"/>
+                <sensor active="0" adress="D6" x="-180.0" y="90.0" z="-80.0" pitch="0.0" yaw="90.0" roll="0.0"/>
+        </tpa81>
+-->
+   
+   <cubeoffsets pitch="0.0" roll="-0.0" />
+
+    <!-- Scanner Tilt Position -->
+<!-- const 62° -->
+<tilt min_angle="-60.4" max_angle="51.5" min_pwm="1381" max_pwm="1874" default_angle="0" invertServo="0"/> 
+    <!-- <scannerposition height="324" lever="146" dx="0" dz="-143"/> -->
+    <scannerposition height="324" lever="146" dx="0" dz="0"/>
+
+
+    <!-- Kamera Pan Position -->
+    <pan min_angle="-101" max_angle="90" min_pwm="7" max_pwm="31" default_angle="0" invertServo="1"/>
+    
+    <!-- Kamera Tilt Position -->
+    <arm min_pos="-65" max_pos="80" min_pwm="10" max_pwm="27" default_pos="0" invertServo="0"/> 
+                        	
+    <startbutton active="1" useIr="0" />
+
+	<!-- IR Sensor -->
+
+        <ir minrange="100" maxrange="800" viewangle="5">
+		<sensor converter="0" port="0" x="0.0" y="-15.0" z="-175.0" pitch="0.0" yaw="0.0" roll="0.0" /> 
+<!--		<sensor converter="0" port="1" x="-115.0" y="-15.0" z="-175.0" pitch="0.0" yaw="0.0" roll="0.0" />
+		<sensor converter="0" port="2" x="-178.0" y="-15.0" z="0.0" pitch="0.0" yaw="90.0" roll="0.0" />
+		<sensor converter="0" port="3" x="-110.0" y="-15.0" z="178.0" pitch="0.0" yaw="180.0" roll="0.0" />
+		<sensor converter="0" port="4" x="110.0" y="-15.0" z="178.0" pitch="0.0" yaw="180.0" roll="0.0" />
+		<sensor converter="0" port="5" x="178.0" y="-15.0" z="0.0" pitch="0.0" yaw="-90.0" roll="0.0" />
+		<sensor converter="0" port="6" x="115.0" y="-15.0" z="-175.0" pitch="0.0" yaw="0.0" roll="0.0" />
+-->
+	</ir>
+
+	<odometrylf active="1" />
+	<odometrylr active="1" />
+	<odometryrf active="1" />
+	<odometryrr active="1" />
+	<odometryrot active="1" />
+	
+</document>
