@@ -1,0 +1,15 @@
+<package>
+  <description brief="camera_control_msgs">
+
+     camera_control_msgs
+
+  </description>
+  <author>zohourir-RoboCupUser</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/camera_control_msgs</url>
+  <depend package="actionlib"/>
+  <depend package="actionlib_msgs"/>
+</package>
+
+
