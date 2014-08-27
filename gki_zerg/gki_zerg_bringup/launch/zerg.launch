@@ -6,8 +6,8 @@
 
     <include file="$(find gki_zerg_bringup)/launch/ps3_teleop.launch" />
 
-    <include file="$(find gki_zerg_bringup)/launch/laser.launch" />
-    <include file="$(find gki_zerg_bringup)/launch/scan_filter.launch" />
+    <!--include file="$(find gki_zerg_bringup)/launch/laser.launch" />
+    <include file="$(find gki_zerg_bringup)/launch/scan_filter.launch" /-->
     <include file="$(find gki_zerg_bringup)/launch/axis.launch">
     </include>
 </launch>
