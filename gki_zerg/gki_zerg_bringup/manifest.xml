@@ -16,7 +16,9 @@
   <depend package="gki_estop_safety_controller"/>
   <depend package="gki_joystick_estop"/>
   <depend package="axis_camera"/>
+  <depend package="axis_to_joint_states"/>
   <depend package="gki_zerg_mcclient"/>
+  <depend package="gki_turtlebot_teleop"/>
 
 </package>
 

@@ -76,25 +76,25 @@
     <zerg_wheel link_name="wheel_rear_left_link" />
     <zerg_wheel link_name="wheel_rear_right_link" />
 
-    <joint name="wheel_front_left_joint" type="continuous">
+    <joint name="wheel_front_left_joint" type="fixed">
       <parent link="base_link"/>
       <child link="wheel_front_left_link"/>
       <origin xyz="0.134 ${0.357/2 + 0.02} 0.0635" rpy="${-M_PI/2} 0 0"/>
       <axis xyz="0 0 1"/>
     </joint>
-    <joint name="wheel_front_right_joint" type="continuous">
+    <joint name="wheel_front_right_joint" type="fixed">
       <parent link="base_link"/>
       <child link="wheel_front_right_link"/>
       <origin xyz="0.134 -${0.357/2 + 0.02} 0.0635" rpy="${-M_PI/2} 0 0"/>
       <axis xyz="0 0 1"/>
     </joint>
-    <joint name="wheel_rear_left_joint" type="continuous">
+    <joint name="wheel_rear_left_joint" type="fixed">
       <parent link="base_link"/>
       <child link="wheel_rear_left_link"/>
       <origin xyz="-0.134 ${0.357/2 + 0.02} 0.0635" rpy="${-M_PI/2} 0 0"/>
       <axis xyz="0 0 1"/>
     </joint>
-    <joint name="wheel_rear_right_joint" type="continuous">
+    <joint name="wheel_rear_right_joint" type="fixed">
       <parent link="base_link"/>
       <child link="wheel_rear_right_link"/>
       <origin xyz="-0.134 -${0.357/2 + 0.02} 0.0635" rpy="${-M_PI/2} 0 0"/>

@@ -39,9 +39,8 @@ xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
       <link name="${name}_optical_link" />
 
       <joint name="${name}_pan" type="revolute">
-          <!-- TODO check height of actual camera to camera base -->
-          <origin xyz="0.0 0.0 0.05" rpy="0.0 0.0 -1.57079632679489661922" />
-          <axis xyz="0 0 1" />
+          <origin xyz="0.0 0.0 0.09" rpy="0.0 0.0 -1.57079632679489661922" />
+          <axis xyz="0 0 -1" />
           <parent link="${name}_link"/>
           <child link="${name}_panned_link"/>
           <limit lower="-3.14" upper="3.14" effort="1.0" velocity="3.14" />

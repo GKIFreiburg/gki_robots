@@ -8,6 +8,7 @@ ros::Publisher pubJointStates;
 void axis_callback(const axis_camera::Axis & msg)
 {
     sensor_msgs::JointState js;
+    js.header.stamp = ros::Time::now();
     js.name.push_back("axis_pan");
     js.name.push_back("axis_tilt");
     js.position.resize(2);

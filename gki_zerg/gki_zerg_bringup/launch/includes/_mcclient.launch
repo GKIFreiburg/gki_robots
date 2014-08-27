@@ -2,7 +2,7 @@
   Zerg Driver and mux
  -->
 <launch>
-    <node pkg="gki_zerg_mcclient" type="mcclient" name="zerg_mcclient" args="-c $(find gki_zerg_mcclient)/configs/zerg1.xml" respawn="true">
+    <node pkg="gki_zerg_mcclient" type="mcclient" name="zerg_mcclient" args="-c $(find gki_zerg_mcclient)/configs/zerg1.xml" respawn="false">
         <remap from="cmd_vel" to = "mobile_base/commands/velocity"/> 
         <param name="device" value="/dev/sensors/ftdi_XXXXXX"/>
     </node>
