@@ -24,7 +24,6 @@
   </xacro:axis215>
 
   <joint name="imu_joint" type="fixed">
-      <axis xyz="0 1 0"/>
       <origin xyz="0.056 0.062 0.0202" rpy="0 0 0"/>
       <parent link="base_link"/>
       <child link="imu_link"/>

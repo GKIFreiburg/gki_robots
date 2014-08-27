@@ -2,6 +2,7 @@
     <group ns="axis">
         <node name="axis_image" pkg="axis_camera" type="axis.py">
             <param name="hostname" value="axis215" />
+            <param name="frame_id" value="/axis_optical_link" />
         </node>
         <node name="axis_ptz" pkg="axis_camera" type="axis_ptz.py">
             <param name="hostname" value="axis215" />
