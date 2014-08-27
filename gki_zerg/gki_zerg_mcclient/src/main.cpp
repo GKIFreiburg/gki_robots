@@ -196,8 +196,8 @@ static void msgVelocityHandler(geometry_msgs::Twist msg)
    }
 
    printf("Received velocity command tv=%1.2lf, rv=%1.2lf\n",msg.linear.x, msg.angular.z);
-   msg.linear.x *= 5 * 1000;
-   msg.angular.z = 10 * angles::to_degrees(msg.angular.z);
+   msg.linear.x *= 1000;
+   msg.angular.z = angles::to_degrees(msg.angular.z)/0.7;   // factor by experiemnt
    setVelocity((int)msg.linear.x,(int)msg.angular.z);
 }
 
@@ -420,7 +420,6 @@ int main( int argc, char **argv )
    _lastTransVel = 0;
    _lastRotVel = 0;
    _lastVelocityMessageTime = ros::Time::now();
-   char *rescue_path = getenv("TECHX");
    std::string configName;
    std::string deviceName;
    bool controlLaserPitch = false;
@@ -452,16 +451,12 @@ int main( int argc, char **argv )
       }
    }
 
-   if(rescue_path == NULL){
-      printf("$TECHX not set!\n");
-      return 1;
-   }
    if(configName.empty()) {
       fprintf(stderr, "No configname given and could not autodetect configname.\n");
       printHelp();
       return 1;
    }
-   QString configPath;// = rescue_path;
+   QString configPath;
    //configPath += CONF_PATH;
    configPath += configName.c_str();
    printf("Config-File: %s\n", configPath.ascii());
