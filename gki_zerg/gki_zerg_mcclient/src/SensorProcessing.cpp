@@ -193,8 +193,6 @@ void SensorProcessing::publishSensorData()
 
         tValues.transVelRightRear = (int) (odometry_right_rear_vel * ((float) config->getWheelOutline() / (float) WHEEL_TICKS_PER_CIRCULATION));
         // --CHANGES:END--
-
-        //first, we'll publish the transform over tf
         geometry_msgs::TransformStamped odom_trans;
         odom_trans.header.stamp = msg.header.stamp;
         odom_trans.header.frame_id = "odom";
@@ -205,12 +203,11 @@ void SensorProcessing::publishSensorData()
         odom_trans.transform.translation.z = 0.0;
         odom_trans.transform.rotation = msg.pose.pose.orientation;
 
-        //send the transform
-        odom_broadcaster.sendTransform(odom_trans);
         if (config->enabledOdometrylf() || config->enabledOdometrylr() || config->enabledCompass2() || config->enabledOdometryrf() || config->enabledOdometryrr() || config->enabledOdometryrot())
         {
             detectSlip(tValues);
             pubOdom.publish(msg);
+            odom_broadcaster.sendTransform(odom_trans);
         }
     }
 }

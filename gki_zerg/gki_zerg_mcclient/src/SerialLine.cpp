@@ -1,6 +1,7 @@
-#include "SerialLine.h"
 
 #include "SensorProcessing.h"
+#include "SerialLine.h"
+
 #include <ros/ros.h>
 
 //#define QUEUE_DISCHARGE 20
