@@ -196,18 +196,18 @@ void SensorProcessing::publishSensorData()
         geometry_msgs::TransformStamped odom_trans;
         odom_trans.header.stamp = msg.header.stamp;
         odom_trans.header.frame_id = "odom";
-        odom_trans.child_frame_id = "base_link";
+        odom_trans.child_frame_id = "base_footprint";
 
         odom_trans.transform.translation.x = msg.pose.pose.position.x;
         odom_trans.transform.translation.y = msg.pose.pose.position.y;
         odom_trans.transform.translation.z = 0.0;
         odom_trans.transform.rotation = msg.pose.pose.orientation;
 
+        odom_broadcaster.sendTransform(odom_trans);
         if (config->enabledOdometrylf() || config->enabledOdometrylr() || config->enabledCompass2() || config->enabledOdometryrf() || config->enabledOdometryrr() || config->enabledOdometryrot())
         {
             detectSlip(tValues);
             pubOdom.publish(msg);
-            odom_broadcaster.sendTransform(odom_trans);
         }
     }
 }
