@@ -6,6 +6,7 @@
         </node>
         <node name="axis_ptz" pkg="axis_camera" type="axis_ptz.py">
             <param name="hostname" value="axis215" />
+            <param name="camera_info_uri" value="$(find axis_calibration)/config/axis.yaml" />
         </node>
         <node name="axis_to_joint_states" pkg="axis_to_joint_states" type="axis_to_joint_states">
         </node>
