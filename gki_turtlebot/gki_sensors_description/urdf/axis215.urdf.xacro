@@ -53,7 +53,7 @@ xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
       </joint>
       <!-- If optical frame is somewhat turned, put this here -->
       <joint name="${name}_tilt_to_optical" type="fixed">
-          <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+          <origin xyz="0.0 0.0 0.0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
           <parent link="${name}_tilted_link"/>
           <child link="${name}_optical_link"/>
       </joint>
