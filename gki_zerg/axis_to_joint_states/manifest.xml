@@ -1,0 +1,18 @@
+<package>
+  <description brief="axis_to_joint_states">
+
+     axis_to_joint_states
+
+  </description>
+  <author>dornhege</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/axis_to_joint_states</url>
+  <depend package="roscpp"/>
+  <depend package="axis_camera"/>
+  <depend package="sensor_msgs"/>
+  <depend package="angles"/>
+
+</package>
+
+

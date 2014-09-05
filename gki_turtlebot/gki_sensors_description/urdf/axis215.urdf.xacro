@@ -34,6 +34,35 @@ xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
         </collision>
       </link>
 
+      <link name="${name}_panned_link" />
+      <link name="${name}_tilted_link" />
+      <link name="${name}_optical_link" />
+
+      <joint name="${name}_pan" type="revolute">
+          <origin xyz="0.0 0.0 0.09" rpy="0.0 0.0 -1.57079632679489661922" />
+          <axis xyz="0 0 -1" />
+          <parent link="${name}_link"/>
+          <child link="${name}_panned_link"/>
+          <limit lower="-3.14" upper="3.14" effort="1.0" velocity="3.14" />
+      </joint>
+      <joint name="${name}_tilt" type="revolute">
+          <axis xyz="0 -1 0" />
+          <parent link="${name}_panned_link"/>
+          <child link="${name}_tilted_link"/>
+          <limit lower="0.0" upper="1.57079632679489661922" effort="1.0" velocity="3.14" />
+      </joint>
+      <!-- If optical frame is somewhat turned, put this here -->
+      <joint name="${name}_tilt_to_optical" type="fixed">
+          <origin xyz="0.0 0.0 0.0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
+          <parent link="${name}_tilted_link"/>
+          <child link="${name}_optical_link"/>
+      </joint>
+
+
+      <!-- axis_link is base/center of camera??? 
+           Finally: make sure that frame is send in axis_camera pubs for imgs and everything that has a header -->
+    <!-- Also needs to be tested for offsets/rotation + direction -->
+
     </xacro:macro>
 </robot>
 

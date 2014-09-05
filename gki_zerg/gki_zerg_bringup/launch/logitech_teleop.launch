@@ -1,0 +1,27 @@
+<launch>
+  <!--  smooths inputs from cmd_vel_mux/input/teleop_raw to cmd_vel_mux/input/teleop -->
+  <include file="$(find turtlebot_teleop)/launch/includes/_velocity_smoother.launch"/>
+
+  <node pkg="gki_turtlebot_teleop" type="turtlebot_teleop_joy" name="turtlebot_teleop_joystick" output="screen">
+    <param name="scale_angular" value="1.5"/>
+    <param name="scale_linear" value="0.5"/>
+    <param name="axis_deadman" value="4"/>
+    <param name="axis_linear" value="1"/>
+    <param name="axis_angular" value="3"/>
+    <param name="joystick_timeout" value="0.5"/>
+
+    <remap from="turtlebot_teleop_joystick/cmd_vel" to="cmd_vel_mux/input/teleop_raw"/>
+    <!--remap from="turtlebot_teleop_joystick/cmd_vel" to="cmd_vel_mux/input/teleop"/-->
+  </node>
+
+  <node pkg="gki_joystick_estop" type="gki_joystick_estop" name="gki_joystick_estop">
+      <param name="stop_button" value="0"/>
+      <param name="go_button" value="3"/>
+      <param name="auto_estop" value="false"/>
+  </node>
+
+  <node pkg="joy" type="joy_node" name="joystick">
+      <param name="autorepeat_rate" value="10"/>
+  </node>
+
+</launch>

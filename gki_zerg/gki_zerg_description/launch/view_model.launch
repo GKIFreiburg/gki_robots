@@ -2,7 +2,7 @@
   Useful for debugging or just viewing the model/urdf/transform. 
  -->
 <launch>
-    <arg name="urdf_file" default="$(find xacro)/xacro.py '$(find gki_zerg_description)/robots/zerg.urdf.xacro'" />
+    <arg name="urdf_file" default="$(find xacro)/xacro.py '$(find gki_zerg_description)/robot/zerg.urdf.xacro'" />
     <param name="robot_description" command="$(arg urdf_file)" />
 
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">

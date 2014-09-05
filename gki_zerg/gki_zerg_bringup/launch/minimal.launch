@@ -8,7 +8,7 @@
 
   <include file="$(find gki_zerg_bringup)/launch/includes/_robot.launch">
   </include>
-  <include file="$(find gki_zerg_bringup)/launch/includes/_mobile_base.launch">
+  <include file="$(find gki_zerg_bringup)/launch/includes/_mcclient.launch">
   </include>
   <include file="$(find gki_zerg_bringup)/launch/includes/_netbook.launch">
     <arg name="battery" value="$(arg battery)" />
