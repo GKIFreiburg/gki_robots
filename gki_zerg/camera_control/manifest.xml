@@ -1,0 +1,19 @@
+<package>
+  <description brief="camera_control">
+
+     camera_control
+
+  </description>
+  <author>zohourir-RoboCupUser</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/camera_control</url>
+  <depend package="actionlib"/>
+  <depend package="camera_control_msgs"/>
+  <depend package="axis_camera"/>
+  <depend package="roscpp"/>
+  <depend package="angles"/>
+
+</package>
+
+
