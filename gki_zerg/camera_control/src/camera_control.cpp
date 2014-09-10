@@ -33,7 +33,7 @@
 
   bool CameraControl::SetCameraAngels(double _pan, double _tilt){
     camera_command_.pan = -angles::to_degrees(_pan + camera_pan_offset_);
-    camera_command_.tilt = angles::to_degrees(_tilt);
+    camera_command_.tilt = -angles::to_degrees(_tilt);
    
     axis_camera_pub_.publish(camera_command_);
 
