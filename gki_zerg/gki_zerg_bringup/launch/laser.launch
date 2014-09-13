@@ -1,13 +1,30 @@
 <launch>
-  <node pkg="hokuyo_node" type="hokuyo_node" name="base_laser_node" respawn="true">
+
+  <arg name="disable_imu" default="1" />
+  <arg name="disable_base_laser" default="0" />
+
+  <!-- XSens -->
+  <node pkg="xsens" type="xsens" name="xsens" respawn="true" unless="$(arg disable_imu)">
+    <param name="send_yaw_as_gyro_yaw" value="true" />
+    <param name="time_stamps_from_sample_counter" value="true" />
+
+    <param name="device" value="/dev/sensors/ftdi_XSVOON4Z" />
+    <param name="publish_base_stabilized_tf" value="true" />
+    <param name="base_stabilized_frame" value="base_stabilized" />
+    <param name="base_link_frame" value="base_link" />
+  </node>
+
+  <!-- Base Laser -->
+  <group unless="$(arg disable_base_laser)" >
+  <node pkg="hokuyo_node" type="hokuyo_node" name="base_hokuyo_node">
     <remap from="scan" to="base_scan" />
-    <param name="port" value="/dev/sensors/laser" />
-    <param name="frame_id" type="string" value="/base_laser_link" />
-    <param name="min_ang" type="double" value="-2.086214" />
-    <param name="max_ang" type="double" value="2.092350" />
+    <param name="port" value="/dev/sensors/hokuyo_H0904092" />
+    <param name="frame_id" type="string" value="base_laser_link" />
+    <param name="min_ang" type="double" value="-2.35619449019234492883" />
+    <param name="max_ang" type="double" value="2.35619449019234492883" />
     <param name="skip" type="int" value="0" />
     <param name="intensity" value="false" />
-    <param name="use_rep_117" value="true" />
   </node>
+  </group>
+  
 </launch>
-
