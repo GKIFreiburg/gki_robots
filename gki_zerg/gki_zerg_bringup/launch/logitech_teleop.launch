@@ -22,6 +22,7 @@
 
   <node pkg="joy" type="joy_node" name="joystick">
       <param name="autorepeat_rate" value="10"/>
+      <param name="dev" value="/dev/input/js1" />
   </node>
 
 </launch>
