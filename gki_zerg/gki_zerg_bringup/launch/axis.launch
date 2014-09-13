@@ -10,5 +10,7 @@
         </node>
         <node name="axis_to_joint_states" pkg="axis_to_joint_states" type="axis_to_joint_states">
         </node>
+        <node name="axis_control" pkg="camera_control" type="camera_control">
+        </node>
     </group>
 </launch>
