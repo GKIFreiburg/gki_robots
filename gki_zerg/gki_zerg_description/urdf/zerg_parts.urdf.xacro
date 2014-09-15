@@ -71,6 +71,66 @@
     </link>
   </xacro:macro>
 
+  <xacro:macro name="bar_side_horizontal" params="parent number x_loc y_loc z_loc">  
+    <joint name="bar_side_horizontal_${number}_joint" type="fixed">
+      <origin xyz="${x_loc} ${y_loc} ${z_loc}" rpy="0 0 0"/>
+      <parent link="${parent}"/>
+      <child link="bar_side_horizontal_${number}_link"/>
+    </joint>
+    <link name="bar_side_horizontal_${number}_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.3 0.04 0.02" />
+        </geometry>
+        <xacro:insert_block name="material_light_grey"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.3 0.04 0.02" />
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.01"/>
+        <origin xyz="0 0 0"/>
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+                 iyy="0.0001" iyz="0.0"
+                 izz="0.0001"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+
+  <xacro:macro name="cube_holder" params="parent number x_loc y_loc z_loc">  
+    <joint name="cube_holder_${number}_joint" type="fixed">
+      <origin xyz="${x_loc} ${y_loc} ${z_loc}" rpy="0 0 0"/>
+      <parent link="${parent}"/>
+      <child link="cube_holder_${number}_link"/>
+    </joint>
+    <link name="cube_holder_${number}_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <mesh filename="package://gki_zerg_description/meshes/cube_holder_rviz.stl"/>
+        </geometry>
+        <xacro:insert_block name="material_light_grey"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <mesh filename="package://gki_zerg_description/meshes/cube_holder_rviz.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.01"/>
+        <origin xyz="0 0 0"/>
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+                 iyy="0.0001" iyz="0.0"
+                 izz="0.0001"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+
   <!-- 
     Stack macro - all the components relative transforms are made with respect 
     to the parent link (usually base_link). They could be made relative to each
@@ -79,6 +139,9 @@
   <xacro:macro name="zerg_parts" params="parent">
     <bar_vertical parent="${parent}" number="0" x_loc="0.0" y_loc= "0.1885" z_loc="0.2585"/>
     <bar_vertical parent="${parent}" number="1" x_loc="0.0" y_loc="-0.1885" z_loc="0.2585"/>
-    <bar_horizontal parent="${parent}" number="0" x_loc="0.0" y_loc="0.0" z_loc="0.4"/>
+    <bar_horizontal parent="${parent}" number="0" x_loc="-0.17" y_loc="0.0" z_loc="0.41"/>
+    <bar_side_horizontal parent="${parent}" number="0" x_loc="0.0" y_loc="0.1585" z_loc="0.4"/>
+    <bar_side_horizontal parent="${parent}" number="1" x_loc="0.0" y_loc="-0.1585" z_loc="0.4"/>
+    <cube_holder parent="${parent}" number="0" x_loc="0.10" y_loc="0.0" z_loc="0.25"/>
   </xacro:macro>
 </robot>

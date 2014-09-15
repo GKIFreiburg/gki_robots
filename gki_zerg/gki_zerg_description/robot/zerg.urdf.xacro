@@ -16,11 +16,11 @@
   <include filename="$(find gki_sensors_description)/urdf/hokuyo_urg.urdf.xacro" />
   <include filename="$(find gki_sensors_description)/urdf/axis215.urdf.xacro" />
 
-  <xacro:hokuyo_urg name="base_laser" parent="base_link" ros_topic="base_scan" update_rate="10" ray_count="667" min_angle="120" max_angle="-120">
-    <origin xyz="0.1 0.0 0.138" rpy="0 0 0"/>
+  <xacro:hokuyo_urg name="base_laser" parent="base_link" ros_topic="base_scan" update_rate="30" ray_count="1080" min_angle="135" max_angle="-135">
+    <origin xyz="0.12 0.0 0.178" rpy="0 0 0"/>
   </xacro:hokuyo_urg>
-  <xacro:axis215 name="axis" parent="base_link">
-    <origin xyz="0.0 0.0 0.41" rpy="0 0 0"/>
+  <xacro:axis215 name="axis" parent="bar_horizontal_0_link">
+    <origin xyz="0.0 0.0 0.01" rpy="0 0 0"/>
   </xacro:axis215>
 
   <joint name="imu_joint" type="fixed">

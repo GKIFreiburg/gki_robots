@@ -1,4 +1,5 @@
 <launch>
+  <arg name="device" default="/dev/input/js1" />
   <!--  smooths inputs from cmd_vel_mux/input/teleop_raw to cmd_vel_mux/input/teleop -->
   <include file="$(find turtlebot_teleop)/launch/includes/_velocity_smoother.launch"/>
 
@@ -22,7 +23,7 @@
 
   <node pkg="joy" type="joy_node" name="joystick">
       <param name="autorepeat_rate" value="10"/>
-      <param name="dev" value="/dev/input/js1" />
+      <param name="dev" value="$(arg device)" />
   </node>
 
 </launch>
