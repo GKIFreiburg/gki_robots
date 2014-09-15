@@ -17,7 +17,7 @@
   <include filename="$(find gki_sensors_description)/urdf/axis215.urdf.xacro" />
 
   <xacro:hokuyo_urg name="base_laser" parent="base_link" ros_topic="base_scan" update_rate="30" ray_count="1080" min_angle="135" max_angle="-135">
-    <origin xyz="0.12 0.0 0.178" rpy="0 0 0"/>
+    <origin xyz="0.12 0.0 0.138" rpy="0 0 0"/>
   </xacro:hokuyo_urg>
   <xacro:axis215 name="axis" parent="bar_horizontal_0_link">
     <origin xyz="0.0 0.0 0.01" rpy="0 0 0"/>

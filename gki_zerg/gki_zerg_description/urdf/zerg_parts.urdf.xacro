@@ -101,24 +101,89 @@
     </link>
   </xacro:macro>
 
-  <xacro:macro name="cube_holder" params="parent number x_loc y_loc z_loc">  
-    <joint name="cube_holder_${number}_joint" type="fixed">
+  <xacro:property name="material_tan2">
+    <material name="tan2">
+      <color rgba="0.93 0.60 0.28 1"/>
+    </material>
+  </xacro:property>
+  <xacro:macro name="cube_holder" params="parent x_loc y_loc z_loc">  
+    <joint name="cube_holder_joint" type="fixed">
       <origin xyz="${x_loc} ${y_loc} ${z_loc}" rpy="0 0 0"/>
       <parent link="${parent}"/>
-      <child link="cube_holder_${number}_link"/>
+      <child link="cube_holder_link"/>
     </joint>
-    <link name="cube_holder_${number}_link">
+    <link name="cube_holder_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
             <mesh filename="package://gki_zerg_description/meshes/cube_holder_rviz.stl"/>
+        </geometry>
+        <xacro:insert_block name="material_tan2"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <mesh filename="package://gki_zerg_description/meshes/cube_holder_rviz.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.01"/>
+        <origin xyz="0 0 0"/>
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+                 iyy="0.0001" iyz="0.0"
+                 izz="0.0001"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+
+  <xacro:macro name="pilot_bar" params="parent x_loc y_loc z_loc">  
+    <joint name="pilot_bar_joint" type="fixed">
+      <origin xyz="${x_loc} ${y_loc} ${z_loc}" rpy="0 0 0"/>
+      <parent link="${parent}"/>
+      <child link="pilot_bar_link"/>
+    </joint>
+    <link name="pilot_bar_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.02 0.36 0.02" />
         </geometry>
         <xacro:insert_block name="material_light_grey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-            <mesh filename="package://gki_zerg_description/meshes/cube_holder_rviz.stl"/>
+            <box size="0.02 0.36 0.02" />
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.01"/>
+        <origin xyz="0 0 0"/>
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+                 iyy="0.0001" iyz="0.0"
+                 izz="0.0001"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+
+  <xacro:macro name="pilot_tip" params="parent x_loc y_loc z_loc">  
+    <joint name="pilot_tip_joint" type="fixed">
+      <origin xyz="${x_loc} ${y_loc} ${z_loc}" rpy="0 0 0"/>
+      <parent link="${parent}"/>
+      <child link="pilot_tip_link"/>
+    </joint>
+    <link name="pilot_tip_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.065 0.04 0.02" />
+        </geometry>
+        <xacro:insert_block name="material_light_grey"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.065 0.04 0.02" />
         </geometry>
       </collision>
       <inertial>
@@ -139,9 +204,11 @@
   <xacro:macro name="zerg_parts" params="parent">
     <bar_vertical parent="${parent}" number="0" x_loc="0.0" y_loc= "0.1885" z_loc="0.2585"/>
     <bar_vertical parent="${parent}" number="1" x_loc="0.0" y_loc="-0.1885" z_loc="0.2585"/>
-    <bar_horizontal parent="${parent}" number="0" x_loc="-0.17" y_loc="0.0" z_loc="0.41"/>
-    <bar_side_horizontal parent="${parent}" number="0" x_loc="0.0" y_loc="0.1585" z_loc="0.4"/>
-    <bar_side_horizontal parent="${parent}" number="1" x_loc="0.0" y_loc="-0.1585" z_loc="0.4"/>
-    <cube_holder parent="${parent}" number="0" x_loc="0.10" y_loc="0.0" z_loc="0.25"/>
+    <bar_horizontal parent="${parent}" number="0" x_loc="-0.1275" y_loc="0.0" z_loc="0.405"/>
+    <bar_side_horizontal parent="${parent}" number="0" x_loc="0.0475" y_loc="0.1585" z_loc="0.4"/>
+    <bar_side_horizontal parent="${parent}" number="1" x_loc="0.0475" y_loc="-0.1585" z_loc="0.4"/>
+    <cube_holder parent="${parent}" x_loc="0.15" y_loc="0.0" z_loc="0.27"/>
+    <pilot_bar parent="${parent}" x_loc="0.19" y_loc="0.0" z_loc="0.0625"/>
+    <pilot_tip parent="${parent}" x_loc="0.23" y_loc="0.0" z_loc="0.0625"/>
   </xacro:macro>
 </robot>
