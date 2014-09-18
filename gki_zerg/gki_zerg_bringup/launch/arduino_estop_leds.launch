@@ -1,0 +1,8 @@
+<launch>
+
+  <!-- Arduino Client -->
+  <node pkg="rosserial_python" type="serial_node.py" name="arduino_client" args="" respawn="true" >
+    <param name="port" value="/dev/sensors/ftdi_A9007Rqx" />
+  </node>
+  
+</launch>

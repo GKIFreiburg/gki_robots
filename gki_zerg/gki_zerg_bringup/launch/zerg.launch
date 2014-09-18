@@ -9,7 +9,7 @@
 
     <include file="$(find gki_zerg_bringup)/launch/laser.launch" />
     <!--include file="$(find gki_zerg_bringup)/launch/scan_filter.launch" /-->
-    <include file="$(find gki_zerg_bringup)/launch/axis.launch">
-    </include>
+    <include file="$(find gki_zerg_bringup)/launch/axis.launch" />
+    <include file="$(find gki_zerg_bringup)/launch/arduino_estop_leds.launch" />
 </launch>
 

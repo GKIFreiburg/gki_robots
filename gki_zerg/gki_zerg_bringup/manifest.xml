@@ -20,6 +20,7 @@
   <depend package="camera_control"/>
   <depend package="gki_zerg_mcclient"/>
   <depend package="gki_turtlebot_teleop"/>
+  <depend package="arduino15_groovy"/>
 
 </package>
 
