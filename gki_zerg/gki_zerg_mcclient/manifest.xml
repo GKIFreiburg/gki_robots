@@ -15,7 +15,7 @@
   <depend package="nav_msgs"/>
   <depend package="gki_utils"/>
   <depend package="qextserialport"/>
-
+  <depend package="diagnostic_updater"/>
 </package>
 
 
