@@ -86,7 +86,6 @@ const unsigned int maxLastPitches = 20;
 //static void setPanTilt(double pan_angle, double tilt_angle, int arm_pos);
 //static int keepLaserPitch(double pitch);
 
-
 static void msgInertiaCubeHandler(const sensor_msgs::Imu & msg)
 {
     double yaw_deg = angles::to_degrees(tf::getYaw(msg.orientation));

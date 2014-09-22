@@ -8,6 +8,9 @@
 #include <stddef.h>
 #include <sys/time.h>
 #include <vector>
+#include <nav_msgs/Odometry.h>
+#include <diagnostic_updater/diagnostic_updater.h>
+#include <diagnostic_updater/publisher.h>
 
 // --CHANGES:BEGIN--
 // includes are not needed
@@ -85,6 +88,8 @@ public:
 protected:
     bool _processOdometry;
     ConfigParser* config;
+    diagnostic_updater::Updater* diagnostics;
+    diagnostic_updater::DiagnosedPublisher<nav_msgs::Odometry>* odomDiagnosticPublisher;
     ros::Publisher pubOdom;
     tf::TransformBroadcaster odom_broadcaster;
 

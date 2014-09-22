@@ -65,6 +65,12 @@ SensorProcessing::SensorProcessing(ConfigParser* config, bool processOdo)
 
     ros::NodeHandle nh;
     pubOdom = nh.advertise<nav_msgs::Odometry>("odom", 1);
+    diagnostics = new diagnostic_updater::Updater();
+    diagnostics->setHardwareID("none");
+    double minFreq = 9;
+    double maxFreq = 100;
+    odomDiagnosticPublisher = new diagnostic_updater::DiagnosedPublisher<nav_msgs::Odometry>(pubOdom, *diagnostics, diagnostic_updater::FrequencyStatusParam(&minFreq, &maxFreq, 0.2, 50), diagnostic_updater::TimeStampStatusParam(0.0, 0.015));
+
 }
 
 SensorProcessing::~SensorProcessing()
@@ -207,7 +213,8 @@ void SensorProcessing::publishSensorData()
         if (config->enabledOdometrylf() || config->enabledOdometrylr() || config->enabledCompass2() || config->enabledOdometryrf() || config->enabledOdometryrr() || config->enabledOdometryrot())
         {
             detectSlip(tValues);
-            pubOdom.publish(msg);
+            odomDiagnosticPublisher->publish(msg);
+            //pubOdom.publish(msg);
         }
     }
 }
