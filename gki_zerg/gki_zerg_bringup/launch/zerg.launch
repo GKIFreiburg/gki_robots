@@ -1,14 +1,13 @@
 <launch>
     <include file="$(find gki_zerg_bringup)/launch/minimal.launch" />
 
-    <include file="$(find gki_zerg_bringup)/launch/includes/_safety_controller.launch">
-    </include>
+    <include file="$(find gki_zerg_bringup)/launch/includes/_safety_controller.launch" />
 
     <!--include file="$(find gki_zerg_bringup)/launch/ps3_teleop.launch" /-->
     <include file="$(find gki_zerg_bringup)/launch/logitech_teleop.launch" />
 
     <include file="$(find gki_zerg_bringup)/launch/laser.launch" />
-    <!--include file="$(find gki_zerg_bringup)/launch/scan_filter.launch" /-->
+    <include file="$(find gki_zerg_bringup)/launch/scan_filter.launch" />
     <include file="$(find gki_zerg_bringup)/launch/axis.launch" />
     <include file="$(find gki_zerg_bringup)/launch/arduino_estop_leds.launch" />
 </launch>
