@@ -1,8 +1,8 @@
 <launch>
     <include file="$(find gki_zerg_bringup)/launch/minimal.launch" />
 
-    <!--include file="$(find gki_zerg_bringup)/launch/includes/_safety_controller.launch">
-    </include-->
+    <include file="$(find gki_zerg_bringup)/launch/includes/_safety_controller.launch">
+    </include>
 
     <!--include file="$(find gki_zerg_bringup)/launch/ps3_teleop.launch" /-->
     <include file="$(find gki_zerg_bringup)/launch/logitech_teleop.launch" />
