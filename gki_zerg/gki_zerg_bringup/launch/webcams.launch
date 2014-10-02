@@ -1,9 +1,10 @@
 <launch>
+    <arg name="as_nodelet" default="0" />
 
     <include file="$(find gki_zerg_bringup)/launch/camera_front.launch" />
 
     <include file="$(find gki_zerg_bringup)/launch/camera_cube.launch">
-        <arg name="as_nodelet" value="0" />
+        <arg name="as_nodelet" value="$(arg as_nodelet)" />
     </include>
 
 </launch>

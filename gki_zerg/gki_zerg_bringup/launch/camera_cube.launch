@@ -1,10 +1,10 @@
 <launch>
     <arg name="as_nodelet" />
 
-    <group if="$(arg as_nodelet)" >
-        <node pkg="nodelet" type="nodelet" name="camera_cube" args="manager" output="screen"/>
+    <group if="$(arg as_nodelet)" ns="camera_cube">
+        <node pkg="nodelet" type="nodelet" name="camera_cube_manager" args="manager" />
 
-        <node pkg="nodelet" type="nodelet" name="uvc_camera" args="load uvc_camera/CameraNodelet /camera_cube" output="screen">
+        <node pkg="nodelet" type="nodelet" name="uvc_camera" args="load uvc_camera/CameraNodelet /camera_cube/camera_cube_manager" output="screen">
             <param name="device" value="/dev/sensors/camera_AF7E0320" />
             <!--param name="device" value="/dev/sensors/camera_F2EBE660" /-->
             <param name="frame_id" value="/cube_camera_optical_link" />
@@ -17,7 +17,7 @@
     </group>
 
     <group unless="$(arg as_nodelet)" ns="camera_cube">
-        <node name="camera_cube_driver" pkg="uvc_camera" type="uvc_camera_node" respawn="false">
+        <node name="camera_cube_driver" pkg="uvc_camera" type="uvc_camera_node" respawn="true">
             <param name="device" value="/dev/sensors/camera_AF7E0320" />
             <!--param name="device" value="/dev/sensors/camera_F2EBE660" /-->
             <param name="frame_id" value="/cube_camera_optical_link" />
