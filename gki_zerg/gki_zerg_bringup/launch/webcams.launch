@@ -1,23 +1,10 @@
 <launch>
-    <group ns="camera_front">
-        <node name="camera_front_driver" pkg="uvc_camera" type="uvc_camera_node" respawn="true">
-            <param name="device" value="/dev/sensors/camera_6EAECD60" />
-            <param name="frame_id" value="/front_camera_optical_link" />
-            <param name="fps" value="10" />
-            <param name="width" value="640" />
-            <param name="height" value="480" />
-            <!--param name="width" value="1280" />
-            <param name="height" value="720" /-->
-        </node>
-    </group>
-    <group ns="camera_cube">
-        <node name="camera_cube_driver" pkg="uvc_camera" type="uvc_camera_node" respawn="true">
-            <param name="device" value="/dev/sensors/camera_AF7E0320" />
-            <param name="frame_id" value="/cube_camera_optical_link" />
-            <param name="fps" value="10" />
-            <param name="width" value="640" />
-            <param name="height" value="480" />
-        </node>
-    </group>
+
+    <include file="$(find gki_zerg_bringup)/launch/camera_front.launch" />
+
+    <include file="$(find gki_zerg_bringup)/launch/camera_cube.launch">
+        <arg name="as_nodelet" value="0" />
+    </include>
+
 </launch>
 
