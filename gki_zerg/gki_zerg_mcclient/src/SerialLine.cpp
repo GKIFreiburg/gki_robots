@@ -333,8 +333,7 @@ goto errorHandling;
             for( unsigned int j = 0; j < k; j++ )
                msg.append( QChar( buffer[j] ) );
 
-            qWarning( msg );
-
+            ROS_INFO_THROTTLE(1.0, "MC reply: %s", qPrintable(msg));
          }
       }  // while queue.size > 0
 
