@@ -194,7 +194,7 @@ static void msgVelocityHandler(geometry_msgs::Twist msg)
       return;
    }
 
-   ROS_INFO_THROTTLE(1.0, "Received velocity command tv=%1.2lf, rv=%1.2lf",msg.linear.x, msg.angular.z);
+   ROS_DEBUG_THROTTLE(1.0, "Received velocity command tv=%1.2lf, rv=%1.2lf",msg.linear.x, msg.angular.z);
    msg.linear.x *= 1000;
    msg.angular.z = angles::to_degrees(msg.angular.z)/0.7;   // factor by experiemnt
    setVelocity((int)msg.linear.x,(int)msg.angular.z);
@@ -562,6 +562,8 @@ int main( int argc, char **argv )
    }
 
    printf("Closing mcClient. \n");
+   setVelocity(0, 0);
+   usleep(500 * 1000);
 
    serialLine.setTimeToExit();
    serialLine.terminate();

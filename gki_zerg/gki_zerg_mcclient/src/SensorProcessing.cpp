@@ -66,10 +66,10 @@ SensorProcessing::SensorProcessing(ConfigParser* config, bool processOdo)
     ros::NodeHandle nh;
     pubOdom = nh.advertise<nav_msgs::Odometry>("odom", 1);
     diagnostics = new diagnostic_updater::Updater();
-    diagnostics->setHardwareID("none");
-    double minFreq = 9;
-    double maxFreq = 100;
-    odomDiagnosticPublisher = new diagnostic_updater::DiagnosedPublisher<nav_msgs::Odometry>(pubOdom, *diagnostics, diagnostic_updater::FrequencyStatusParam(&minFreq, &maxFreq, 0.2, 50), diagnostic_updater::TimeStampStatusParam(0.0, 0.015));
+    diagnostics->setHardwareID("Zerg");
+    minFreq = 30;
+    maxFreq = 30;
+    odomDiagnosticPublisher = new diagnostic_updater::DiagnosedPublisher<nav_msgs::Odometry>(pubOdom, *diagnostics, diagnostic_updater::FrequencyStatusParam(&minFreq, &maxFreq, 0.2, 10), diagnostic_updater::TimeStampStatusParam(0.0, 0.015));
 
 }
 
@@ -104,6 +104,11 @@ void SensorProcessing::filterOdometry()
         odometry_pos_x += cos(angles::from_degrees((double) getOdometryPosTh())) * delta_dist;
         odometry_pos_y += sin(angles::from_degrees((double) getOdometryPosTh())) * delta_dist;
     }
+}
+
+void SensorProcessing::update()
+{
+    diagnostics->update();
 }
 
 void SensorProcessing::updateTime(timeval* time)

@@ -82,6 +82,7 @@ public:
 
     void publishSensorData();
     void publishPyroSweepData(timeval starttime, long duration);
+    void update();
 
     int last_cube_heading;
 
@@ -93,6 +94,8 @@ protected:
     ros::Publisher pubOdom;
     tf::TransformBroadcaster odom_broadcaster;
 
+    double minFreq;
+    double maxFreq;
     // --CHANGES:BEGIN--
     // object is not needed
     // TouchSensor touchSensor;
