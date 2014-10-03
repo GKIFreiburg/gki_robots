@@ -16,7 +16,7 @@
 
   <!-- Base Laser -->
   <group unless="$(arg disable_base_laser)" >
-  <node pkg="hokuyo_node" type="hokuyo_node" name="base_hokuyo_node">
+  <node pkg="hokuyo_node" type="hokuyo_node" name="base_laser_node">
     <remap from="scan" to="base_scan" />
     <param name="port" value="/dev/sensors/hokuyo_H0904092" />
     <param name="frame_id" type="string" value="base_laser_link" />
@@ -26,5 +26,5 @@
     <param name="intensity" value="false" />
   </node>
   </group>
-  
+
 </launch>
