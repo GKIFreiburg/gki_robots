@@ -14,10 +14,6 @@ subscribers:
     topic:       "input/estop"
     timeout:     0.5
     priority:    15
-  - name:        "Safe reactive controller"
-    topic:       "input/safety_controller"
-    timeout:     0.2
-    priority:    10
   - name:        "Teleoperation"
     topic:       "input/teleop"
     timeout:     1.0

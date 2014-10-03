@@ -1,5 +1,5 @@
 <launch>
-  <include file="$(find gki_zerg_bringup)/launch/includes/_mux_safety_controller.launch" />
+  <!--include file="$(find gki_zerg_bringup)/launch/includes/_mux_safety_controller.launch" /-->
 
     <!-- We don't have EStop from the base, so the button mount and joystick both send on estop topics.
          Run two gki_estop_safety_controller one for the /estop topic, one for /joystick_estop -->
