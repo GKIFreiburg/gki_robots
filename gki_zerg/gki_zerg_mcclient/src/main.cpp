@@ -545,6 +545,7 @@ int main( int argc, char **argv )
       // Stop, falls letzte Velocity Message zu alt
 
        ros::Time now = ros::Time::now();
+       sensorProcessing->update();
 
       //// Adjust pitch angle ?
       //if (controlLaserPitch) {

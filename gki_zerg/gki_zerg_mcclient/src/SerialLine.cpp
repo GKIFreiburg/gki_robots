@@ -532,8 +532,6 @@ goto errorHandling;
       sensorProcessing->filterOdometry();
 
       sensorProcessing->publishSensorData();
-      sensorProcessing->update();
-
       msleep( 1 );
    }  // while(! timeToExit )
 
