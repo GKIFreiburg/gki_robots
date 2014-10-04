@@ -528,9 +528,22 @@ int main( int argc, char **argv )
    pan = config->pan_default_angle;
    tilt = config->tilt_default_angle;
 
+   int fail_count = 0;
    while(!g_mcInitialized && ros::ok()) {
+       ROS_ERROR_THROTTLE(1.0, "MC not ready.");
        ros::spinOnce();
-         usleep(100*1000);
+       usleep(100*1000);
+       fail_count++;
+       if(fail_count > 100) {
+           ROS_FATAL("MC not ready after 10s of trying, exiting for restart.");
+           setVelocity(0, 0);
+           usleep(500 * 1000);
+
+           serialLine.setTimeToExit();
+           serialLine.terminate();
+
+           return 1;
+       }
    }
 
    // Entering main loop
