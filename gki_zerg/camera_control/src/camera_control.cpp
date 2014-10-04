@@ -12,7 +12,7 @@
     camera_command_.brightness = 0.0;
     camera_command_.iris = 0.0;
     camera_command_.autofocus = true;
-    axis_camera_pub_ =  nh_.advertise<axis_camera::Axis>("axis/cmd", 1);
+    axis_camera_pub_ =  nh_.advertise<axis_camera::Axis>("cmd", 1);
     as_.start();
 }
 
@@ -36,7 +36,7 @@
     camera_command_.tilt = -angles::to_degrees(_tilt);
    
     axis_camera_pub_.publish(camera_command_);
-
+    return true;
   }
 
   bool CameraControl::DoSweepScan(const camera_control_msgs::CameraGoalConstPtr &goal){
@@ -45,7 +45,7 @@
        SetCameraAngels(i,goal->tilt); 
        r.sleep(); 
    }
-
+   return true;
   }
 
   void CameraControl::executeCB(const camera_control_msgs::CameraGoalConstPtr &goal){
