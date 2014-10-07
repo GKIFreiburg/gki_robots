@@ -38,7 +38,7 @@ xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
           <child link="${name}_panned_link"/>
       </joint>
       <joint name="${name}_tilt" type="fixed">
-          <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.3 0.0" />
+          <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
           <parent link="${name}_panned_link"/>
           <child link="${name}_tilted_link"/>
       </joint>
