@@ -8,6 +8,7 @@
 #include <iostream>
 #include "slip.h"
 #include <tf/tf.h>
+#include "paramHandling.h"
 
 using std::cout;
 
@@ -27,8 +28,10 @@ SensorProcessing::SensorProcessing(ConfigParser* config, bool processOdo)
 
     odometry_pos_x = 0;
     odometry_pos_y = 0;
-    //odometry_pos_th = 0;
+    odometry_pos_th = 0;
     odometry_last_dist = 0;
+    odometry_vel_trans = 0;
+    odometry_vel_rot = 0;
     last_cube_heading = 0;
 
     odometry_left_front_dx = 0;
@@ -92,6 +95,19 @@ void SensorProcessing::filterOdometry()
     double mean_dist = ((double) odometry_left_front_dx + (double) odometry_right_front_dx + double(odometry_left_rear_dx) + double(odometry_right_rear_dx)) / 4.0;
 
     odometry_vel_trans = (int) (((float) config->getWheelOutline() / (float) WHEEL_TICKS_PER_CIRCULATION) * ((float) mean_velocity));
+    odometry_vel_rot = rotation_vel;    // FIXME what is this, raw int from MC
+    // get odometry_vel_rot to deg/s
+    printf("rotation_vel: %d\n", rotation_vel);
+
+    if(McClientParams::g_OdometryEstimateThetaWithoutImu) {
+        // either estimate from rotation_vel
+        // or from delta of velocities/dists
+        static ros::WallTime lastUpdate = ros::WallTime::now();
+        ros::WallTime now = ros::WallTime::now();
+        double dt = (now - lastUpdate).toSec();
+        lastUpdate = now;
+        odometry_pos_th += odometry_vel_rot * dt;
+    }
 
     double new_dist = ((double) config->getWheelOutline() / (double) WHEEL_TICKS_PER_CIRCULATION) * ((double) mean_dist);
 
@@ -141,8 +157,10 @@ double SensorProcessing::getOdometryPosZ()
 
 double SensorProcessing::getOdometryPosTh()
 {
-    //return odometry_pos_th;
-    return last_cube_heading;
+    if(McClientParams::g_OdometryUseImu)
+        return last_cube_heading;
+    else
+        return odometry_pos_th;
 }
 
 int SensorProcessing::getOdometryTransVel()
@@ -191,7 +209,8 @@ void SensorProcessing::publishSensorData()
         // --CHANGES:BEGIN--
         // new variable acceleration
         // TODO: calculate it !!
-        msg.twist.twist.linear.x = 0.0;
+        msg.twist.twist.linear.x = odometry_vel_trans / 1000.0;
+        msg.twist.twist.angular.z = angles::from_degrees(odometry_vel_rot); // TODO
         // --CHANGES:END--
 
         // --CHANGES:BEGIN--

@@ -5,6 +5,8 @@
     <node pkg="gki_zerg_mcclient" type="mcclient" name="zerg_mcclient" args="-c $(find gki_zerg_mcclient)/configs/zerg1.xml" respawn="true">
         <remap from="cmd_vel" to = "mobile_base/commands/velocity"/> 
         <param name="device" value="/dev/sensors/ftdi_DPCDKR2R"/>
+        <param name="odometry_use_imu" value="false"/>
+        <param name="odometry_estimate_theta_without_imu" value="true"/>
     </node>
 
   <!--node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">

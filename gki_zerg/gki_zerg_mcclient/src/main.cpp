@@ -424,7 +424,6 @@ int main( int argc, char **argv )
    bool controlLaserPitch = false;
    char c;
 
-
    while((c = getopt(argc, argv, "ad:c:hp")) != EOF)
    {
       switch(c)
@@ -572,7 +571,7 @@ int main( int argc, char **argv )
          setVelocity(0, 0);
          printf("STOP: Velocity Message Timeout");
       }
-      usleep(50000);
+      usleep(20000);
    }
 
    printf("Closing mcClient. \n");

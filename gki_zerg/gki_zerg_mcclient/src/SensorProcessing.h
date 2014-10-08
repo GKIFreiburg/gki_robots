@@ -153,7 +153,7 @@ protected:
     double odometry_pos_x;
     double odometry_pos_y;
 
-    //double odometry_pos_th;
+    double odometry_pos_th;
     int odometry_vel_trans;
     int odometry_vel_rot;
     double odometry_last_dist;

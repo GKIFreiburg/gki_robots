@@ -11,6 +11,12 @@ namespace McClientParams {
    //extern double g_3dScanAngleStep;
    //extern double g_KeepLaserPitch;
 
+    /// get theta from imu
+    extern bool g_OdometryUseImu;
+    /// only relevant when g_OdometryUseImu is false.
+    /// Should we try to estimate some theta from vels or keep it at zero
+    extern bool g_OdometryEstimateThetaWithoutImu;
+
    extern int g_OdometryUseMagneticYaw;
 
    void subscribeParams(bool setIfNotOnParamServer);
