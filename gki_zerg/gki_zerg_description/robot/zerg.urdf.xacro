@@ -24,7 +24,7 @@
     <origin xyz="0.0 0.0 0.01" rpy="0 0 0"/>
   </xacro:axis215>
   <xacro:front_cam name="front_camera" parent="base_link">
-    <origin xyz="0.225 0.0 0.1" rpy="0 0 0"/>
+    <origin xyz="0.225 0.0 0.1" rpy="0 -0.262 0"/>
   </xacro:front_cam>
 
   <joint name="imu_joint" type="fixed">
