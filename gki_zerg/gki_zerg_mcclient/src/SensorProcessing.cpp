@@ -18,17 +18,20 @@ double last_front = 0, last_last_front = 0, last_rear = 0, last_last_rear = 0;
 
 // Defines the value from which we consider
 // the touch return as a touchdown
-SensorProcessing::SensorProcessing(ConfigParser* config, bool processOdo)
+SensorProcessing::SensorProcessing(ConfigParser* config, bool processOdo, double odoX, double odoY, double odoTh, bool storeOdo)
 {
     this->config = config;
 
     stall = 0;
 
     _processOdometry = processOdo;
+    _storeOdometry = storeOdo;
 
-    odometry_pos_x = 0;
-    odometry_pos_y = 0;
-    odometry_pos_th = 0;
+    odometry_pos_x = odoX;
+    odometry_pos_y = odoY;
+    odometry_pos_th = odoTh;
+
+    // From the values that are integrated.
     odometry_last_dist = 0;
     odometry_vel_trans = 0;
     odometry_vel_rot = 0;
@@ -119,6 +122,18 @@ void SensorProcessing::filterOdometry()
     {
         odometry_pos_x += cos(angles::from_degrees((double) getOdometryPosTh())) * delta_dist;
         odometry_pos_y += sin(angles::from_degrees((double) getOdometryPosTh())) * delta_dist;
+    }
+
+    // store odo on param server periodically
+    if(_storeOdometry) {
+        static ros::Time lastOdoStoreTime = ros::Time(0);
+        if(ros::Time::now() - lastOdoStoreTime > ros::Duration(1.0)) {
+            static ros::NodeHandle nhPriv("~");
+            nhPriv.setParam("odometry_x", odometry_pos_x);
+            nhPriv.setParam("odometry_y", odometry_pos_y);
+            nhPriv.setParam("odometry_th", odometry_pos_th);
+            lastOdoStoreTime = ros::Time::now();
+        }
     }
 }
 

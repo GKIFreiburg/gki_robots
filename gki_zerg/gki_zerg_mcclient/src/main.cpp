@@ -510,8 +510,20 @@ int main( int argc, char **argv )
    // Signal Handling
    //signal(SIGINT, quitproc);
    //signal(SIGTERM, quitproc);     allow kill !!!
+   ros::NodeHandle nhPriv("~");
+   bool store_odometry = false;
+   nhPriv.param("store_odometry", store_odometry, store_odometry);
+   double odoX = 0;
+   double odoY = 0;
+   double odoTh = 0;
+   if(store_odometry) {
+       nhPriv.param("odometry_x", odoX, odoX);
+       nhPriv.param("odometry_y", odoY, odoY);
+       nhPriv.param("odometry_th", odoTh, odoTh);
+       // TODO wont work with IMU yet
+   }
 
-   sensorProcessing = new SensorProcessing( config , true);
+   sensorProcessing = new SensorProcessing(config , true, odoX, odoY, odoTh, store_odometry);
    SerialLine serialLine( serialPort, config, queue, sensorProcessing );
    serialLine.start();
 

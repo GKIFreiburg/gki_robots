@@ -44,7 +44,7 @@ class SensorProcessing
     friend class SerialLine;
 
 public:
-    SensorProcessing(ConfigParser* config, bool processOdo = true);
+    SensorProcessing(ConfigParser* config, bool processOdo, double odoX, double odoY, double odoTh, bool storeOdo);
     ~SensorProcessing();
 
     void setProcessOdo(bool p);
@@ -88,6 +88,7 @@ public:
 
 protected:
     bool _processOdometry;
+    bool _storeOdometry;
     ConfigParser* config;
     diagnostic_updater::Updater* diagnostics;
     diagnostic_updater::DiagnosedPublisher<nav_msgs::Odometry>* odomDiagnosticPublisher;
