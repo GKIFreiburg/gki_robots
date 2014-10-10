@@ -7,6 +7,7 @@
         <param name="device" value="/dev/sensors/ftdi_DPCDKR2R"/>
         <param name="odometry_use_imu" value="false"/>
         <param name="odometry_estimate_theta_without_imu" value="true"/>
+        <param name="store_odometry" value="true"/>
     </node>
 
   <!--node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
