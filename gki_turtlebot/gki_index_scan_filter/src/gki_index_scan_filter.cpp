@@ -39,7 +39,7 @@ public:
   {
     ros::NodeHandle nh;
 
-    scan_sub_ = nh.subscribe("scan", 1, &LaserScanFilter::scanCallback, this);
+    scan_sub_ = nh.subscribe("scan", 3, &LaserScanFilter::scanCallback, this);
     scan_filtered_pub_ = nh.advertise<sensor_msgs::LaserScan>("scan_filtered",1,false);
 
     ros::NodeHandle pnh("~");

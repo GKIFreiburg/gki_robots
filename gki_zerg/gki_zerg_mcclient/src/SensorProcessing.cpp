@@ -98,9 +98,11 @@ void SensorProcessing::filterOdometry()
     double mean_dist = ((double) odometry_left_front_dx + (double) odometry_right_front_dx + double(odometry_left_rear_dx) + double(odometry_right_rear_dx)) / 4.0;
 
     odometry_vel_trans = (int) (((float) config->getWheelOutline() / (float) WHEEL_TICKS_PER_CIRCULATION) * ((float) mean_velocity));
-    odometry_vel_rot = rotation_vel;    // FIXME what is this, raw int from MC
+    double ticks_per_90deg_per_sec = 19967.0;
+    double ticks_per_deg_per_sec = ticks_per_90deg_per_sec/90.0;
+    odometry_vel_rot = rotation_vel / ticks_per_deg_per_sec;
     // get odometry_vel_rot to deg/s
-    printf("rotation_vel: %d\n", rotation_vel);
+    //printf("odometry_vel_rot: %f\n", odometry_vel_rot);
 
     if(McClientParams::g_OdometryEstimateThetaWithoutImu) {
         // either estimate from rotation_vel
